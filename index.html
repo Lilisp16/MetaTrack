@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo MetraTrack</title>
+</head>
+<body>
+
+<header>
+ <!--Nabvar--> 
+  <div class="row align-items-center">
+    <div class=" col d-flex align-items-center  gap-2 justify-content-start">
+      <div class="logoMT">
+         <i data-lucide="sparkles" class="icono-progreso iconMT"></i>
+         </div>
+        <div>
+            <h1 class="h3 mb-0 MT">MetaTrack</h1>
+            <small class="text-muted">Construye tus sueños día a día</small>   
+        </div>
+    </div>
+
+     <!--logo--> 
+   
+
+      <!-- Botón: Nuevo Objetivo -->
+    <div class="col d-flex justify-content-end">
+     <button type="button" class="btn btn-violet"  id="btnNuevoObjetivo" data-bs-toggle="modal" data-bs-target="#miModal">
+      <span class="mas"> + </span>Nuevo Objetivo
+  </button>
+    <!-- Contenedor donde cargaremos el modal -->
+    <div id="contenedorModal"></div>
+    </div>
+  </div>
+
+</header>
+
+
+<main>
+
+  <!--CARD PARA VER PROGRESO-->
+<div class="card p-3 mb-3  cardProgreso">
+  <!-- Fila: Icono + Título -->
+  <div class="d-flex align-items-center mb-2">
+    <i data-lucide="trending-up" class="icono-progreso"></i>
+    <h6 class="card-title mb-0 ms-2">Progreso General</h6>
+  </div>
+
+  <!-- Fila: Barra de progreso + Círculo de porcentaje -->
+  <div class="d-flex align-items-center mb-2">
+    <div class="progress flex-grow-1" style="height: 8px;">
+      <div  id="linearProgress" class="progress-bar" role="progressbar" style="width: 70%;"></div>
+    </div>
+    <div class="circle-progress ms-3">
+      <svg viewBox="0 0 36 36" class="circular-chart">
+        <path class="circle-bg"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path class="circle"
+              stroke-dasharray="70, 100"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <text x="18" y="20" class="percentage">70%</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Texto secundario -->
+  <small class="text-muted">4 de 8 hábitos completados</small>
+</div>
+
+
+
+<!-- CARD PARA CREAR OBJETIVOS GENERALES-->
+
+<div class="card p-3 mb-3 cardProgreso objetivo-card" data-progress="70">
+
+  <!-- Fila 1 -->
+  <div class="d-flex justify-content-between align-items-start mb-3">
+    
+    <!-- Título e información -->
+    <div>
+      <div class="d-flex align-items-center">
+        <p class="card-title mb-0">🏡Comprar una casa</p>
+      </div>
+      <small class="text-muted ms-4">2 metas • 4 hábitos</small>
+    </div>
+
+    <!-- Botón menú -->
+    <button class="btn btn-light btn-sm config">
+      <i data-lucide="more-vertical"></i>
+    </button>
+       
+    <!-- Agrego este menú oculto dentro de cada card para el button config-->
+    <div class="menuConfig card p-2 sombra-suave" style="display:none; position:absolute; right:10px; top:40px; z-index:10;">
+    <button class="btn btn-link agregarMetaBtn">➕ Agregar Meta</button>
+    <button class="btn btn-link text-danger eliminarObjetivoBtn">🗑 Eliminar objetivo</button>
+  </div>
+
+  </div>
+
+
+  <!-- Fila 2-->
+  <div class="d-flex justify-content-between align-items-center mb-2">
+
+    <!-- Círculo de progreso -->
+    <div class="circle-progress">
+      <svg viewBox="0 0 36 36" class="circular-chart">
+        <path class="circle-bg"
+          d="M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path class="circle"
+          stroke-dasharray="70, 100"
+          d="M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <text x="18" y="20" class="percentage">70%</text>
+      </svg>
+    </div>
+
+    <!-- Botón ver metas -->
+    <div class="text-end">
+      <button class="btn btn-link p-0 verMetas">
+        Ver Metas <i data-lucide="chevron-down"></i>
+      </button>
+      <br>
+      <small class="text-muted">3/4 completados</small>
+    </div>
+  </div>
+
+
+
+  <!-- CONTENEDOR DE LISTA DE METAS  -->
+  <div class="listaMetas" style="display: none;">
+
+    <!-- META 1 -->
+    <div class="card p-3 mt-3 sombra-suave meta-card">
+
+      <div class="titulo-meta">
+
+      <!-- Fila 1-->
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        
+        <div class="d-flex align-items-center">
+          <button class="btn btn-link p-0 me-2 toggle-meta">
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <p class="card-title mb-0">💳 Ahorrar para la cuota inicial</p>
+        </div>
+
+        <div>
+          <button class="btn btn-sm btn-light me-2 fondoBoton">
+            <i data-lucide="plus"></i>
+          </button>
+          <button class="btn btn-sm btn-light fondoBoton">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de progreso -->
+      <div class="d-flex align-items-center mb-2">
+        <div class="progress flex-grow-1 me-3" style="height: 8px;">
+          <div class="progress-bar" style="width: 70%;"></div>
+        </div>
+      </div>
+
+      <!-- Contador hábitos -->
+      <small class="text-muted mb-2 d-block">2 hábitos</small>
+</div>
+
+
+      <!-- HABITOS  -->
+      <div class="habitos-meta" style="display: none;">
+
+        <!-- Hábito 1 -->
+        <div class="form-check d-flex align-items-center habit-item mb-1 hover-habit">
+          <input class="form-check-input" type="checkbox" id="habito1">
+          <label class="form-check-label ms-2 flex-grow-1" for="habito1">
+            Ahorrar $500 este mes
+          </label>
+
+          <span class="estado ms-2" id="estado-habito1"></span>
+
+          <button class="btn btn-sm btn-light ms-2">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </div>
+
+        <!-- Hábito 2 -->
+        <div class="form-check d-flex align-items-center habit-item mb-1 hover-habit">
+          <input class="form-check-input" type="checkbox" id="habito2">
+          <label class="form-check-label ms-2 flex-grow-1" for="habito2">
+            Reducir gastos innecesarios
+          </label>
+
+          <span class="estado ms-2" id="estado-habito2"></span>
+
+          <button class="btn btn-sm btn-light ms-2">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  
+</div>
+
+
+    <!-- AQUI GAURDAMOS LOS OBJETIVOS QUE VAMOS A CREAR -->
+
+<div id="listaObjetivos"></div>
+
+
+
+
+
+
+</main>
+
+
+
+<footer>
+    <!--logo--> 
+    <div class="col d-flex justify-content-center">
+      <a  href="https://github.com/Lilisp16/" target="_blank" rel="noopener noreferrer">
+        <img class="logo" src="./img/logoDev.png" alt="logoDev"></a>
+    </div>
+</footer>
+
+
+
+  <!-- Lucide para icono svg -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+
+<script src="./js/configMenu.js"></script>
+<script src="./js/progreso.js"></script>
+<script src="./js/vermetas.js"></script>
+<script src="./js/verhabitos.js"></script>
+<script src="./js/estadoMeta.js"></script>
+<script src="./js/modal.js"></script>
+<script src="./js/aregarObjetivos.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+/*ESTILOS PARA EL NAVBAR */
+
+/* Botón violeta personalizado */
+.logo{
+     width: 80px; 
+     border-radius: 10px; 
+    }
+
+.logoMT {
+    display: flex;                /* flex para centrar ícono */
+    align-items: center;          /* centra vertical */
+    justify-content: center;      /* centra horizontal */
+    width: 2rem;                
+    height: 2rem;                 /* altura de la capsula */
+    background: linear-gradient(45deg, #822ec6, #a546f3); 
+    border-radius: 0.5rem;
+    margin-left: 2rem; 
+    
+}
+
+.iconMT{ 
+    color: white !important;    
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.MT{
+    color: #a546f3;
+}
+
+h1{
+    color: white;
+}
+
+.btn-violet {
+    display: flex;
+    background:linear-gradient(45deg, #822ec6, #a546f3); 
+    color: white; 
+    font-weight: bold; 
+    padding: .10rem .6rem;
+    margin-right: 2rem;
+    font-size: .75rem;
+    border: none;
+    align-items: center; /* centra verticalmente   */
+    gap: 0.25rem; /* espacio entre icono/span y texto */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+}
+
+/* Efecto hover 
+.btn-violet:hover {
+    color: rgb(253, 253, 194);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25); /* sombra más intensa al pasar mouse 
+    transform: translateY(-2px); /* pequeño levantamiento 
+} */
+
+.mas{
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+
+
+/*MAIN */
+.cardProgreso{
+    width: 90%;           /* Ocupa el 80% del ancho de la página */
+    margin: 2rem auto;       /* Centra horizontalmente */
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 2rem;
+    border-color: rgb(248, 243, 243);
+}
+
+.icono-progreso {
+    color: #822ec6; 
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+
+.progress-bar {
+    background: linear-gradient(90deg, #822ec6, #a546f3);
+}
+
+
+/* Estilos para el circulo de PROGRESO SVG */
+.circular-chart {
+    width: 50px;         
+    height: 50px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 4;
+}
+
+.circle {
+    fill: none;
+    stroke: #822ec6;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dasharray 0.3s ease;
+}
+
+.percentage {
+    fill: #822ec6;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-anchor: middle;
+}
+
+
+/* estilos bton de configuracion icon vertical quitando backround (Objetivo) y (+ y trash)*/
+
+.config {
+    background: none ;
+    border: none ;
+    padding: 0.25rem;
+}
+
+.config:hover {
+    background: rgba(0,0,0,0.05);
+    border-radius: 6px;
+}
+
+/* Quitar fondo y borde de los botones de + y eliminar */
+.fondoBoton {
+    background-color: transparent; /* quita el fondo */
+    border: none !important;                  /* quita el borde */
+    padding: 0.2rem 0.4rem;                   /*ajustamos tamaño */
+}
+
+
+
+
+
+/* ESTILOS TARJETA DE METAS */
+
+
+.meta-card {
+    border-radius: 2rem;
+    border: 1px solid rgb(235, 235, 235);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    background: white;
+}
+
+/* Header de la meta */
+.titulo-meta {
+    background-color: rgba(245, 243, 243, 0.92);
+    padding: 0.75rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+
+/* verMetas */
+
+.verMetas {
+    color: #5e4633; 
+    text-decoration: none !important;
+    font-weight: 600;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.verMetas:hover {
+    color: #3b2e23;
+    text-decoration: underline;
+}
+
+.hover-havit{
+    margin: 2rem;
+}
+
+.habitos-meta{
+    margin: 2rem;  /* esta clase es del grupo (lista) de habitos */
+}
+
+/* esta es la clase que contiene cada label de mi lista  el hover-habit*/
+/* Contenedor del hábito */
+.hover-habit {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s, border-color 0.3s;
+    gap: 0.5rem;
+    background-color: #fff;
+}
+
+/* Hover del hábito */
+.hover-habit:hover {
+    background-color: #f8f8f8;
+}
+
+/* Cuando está COMPLETADO */
+.hover-habit.completed {
+    background-color: #d8f5d0; 
+    border-color: #b7e6a8;
+}
+
+/* Label marcado */
+.hover-habit.completed label {
+    color: #2e7d32;
+    text-decoration: line-through;
+}
+
+/* Checkbox alineado dentro de div */
+.hover-habit .form-check-input {
+    margin: 0;
+}
+
+/* Botón eliminar */
+.hover-habit button {
+    background: none;
+    border: none;
+    padding: 0.2rem 0.4rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 0.25rem;
+}
+
+.hover-habit button:hover {
+    background-color: #f2f2f2;
+}
+
+
+
+
+/* --- ESTADOS DE COLOR DE LAS METAS --- */
+.estado-0 {
+  background: #e8f0ff;   /* azul suave */
+}
+
+.estado-progreso {
+  background: #f3e4ff;   /* morado suave */
+}
+
+.estado-completo {
+  background: #e5f9e8;   /* verde suave */
+}
+
+/* animación suave entre estados */
+.card {
+  transition: background-color 0.4s ease;
+}
+
+
+/*ESTILOS PARA MODALES */
+
+.btnAgregar{
+    background:linear-gradient(45deg, #822ec6, #a546f3); 
+    color: white; 
+    font-weight: bold; 
+    padding: .6rem .3rem;
+    font-size: .8rem;
+     transition: all 0.2s ease; /* para efecto hover suave */
+    
+}
+
+/* Efecto hover */
+.btnAgregar:hover {
+    color: rgb(253, 253, 194);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25); /* sombra más intensa al pasar mouse */
+    transform: translateY(-2px); /* pequeño levantamiento */
+}
+
+ .modalTitulosSecundarios{
+    font-weight: bold;
+    color: #3b2e23;
+
+ }
