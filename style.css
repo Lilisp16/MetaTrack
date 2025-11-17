@@ -2,16 +2,16 @@
 
 /* Botón violeta personalizado */
 .logo{
-     width: 80px; 
+     width: 10rem; 
      border-radius: 10px; 
     }
 
 .logoMT {
-    display: flex;                /* flex para centrar ícono */
-    align-items: center;          /* centra vertical */
-    justify-content: center;      /* centra horizontal */
+    display: flex;              
+    align-items: center;        
+    justify-content: center;      
     width: 2rem;                
-    height: 2rem;                 /* altura de la capsula */
+    height: 2rem;               
     background: linear-gradient(45deg, #822ec6, #a546f3); 
     border-radius: 0.5rem;
     margin-left: 2rem; 
@@ -46,12 +46,6 @@ h1{
     box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
 }
 
-/* Efecto hover 
-.btn-violet:hover {
-    color: rgb(253, 253, 194);
-    box-shadow: 0 6px 10px rgba(0,0,0,0.25); /* sombra más intensa al pasar mouse 
-    transform: translateY(-2px); /* pequeño levantamiento 
-} */
 
 .mas{
     font-size: 1rem;
@@ -59,10 +53,9 @@ h1{
 }
 
 
-
 /*MAIN */
 .cardProgreso{
-    width: 90%;           /* Ocupa el 80% del ancho de la página */
+    width: 90%;           
     margin: 2rem auto;       /* Centra horizontalmente */
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -112,7 +105,22 @@ h1{
 }
 
 
+
+
 /* estilos bton de configuracion icon vertical quitando backround (Objetivo) y (+ y trash)*/
+
+.menuConfig {
+   display: none;
+    position: absolute;
+    top: 2rem;   
+    right: 1rem; 
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+   
+    padding: 0.5rem;
+}
+
 
 .config {
     background: none ;
@@ -125,19 +133,21 @@ h1{
     border-radius: 6px;
 }
 
+.objetivo-card {
+    position: relative; /* clave para que el menú se ubique relativo a la card */
+}
+
 /* Quitar fondo y borde de los botones de + y eliminar */
 .fondoBoton {
     background-color: transparent; /* quita el fondo */
-    border: none !important;                  /* quita el borde */
-    padding: 0.2rem 0.4rem;                   /*ajustamos tamaño */
+    border: none !important;                  
+    padding: 0.2rem 0.4rem;                   
 }
 
 
 
 
-
 /* ESTILOS TARJETA DE METAS */
-
 
 .meta-card {
     border-radius: 2rem;
@@ -228,6 +238,20 @@ h1{
 
 .hover-habit button:hover {
     background-color: #f2f2f2;
+}
+
+
+/* boton agregar meta y eliminar */
+
+.btn-link {
+  text-decoration: none !important;
+}
+.btn-link:hover {
+  text-decoration: none !important;
+}
+
+.text-violet{
+     color: #a546f3 !important;
 }
 
 

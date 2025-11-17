@@ -1,8 +1,8 @@
-/**
- * Actualizamos la barra de progreso y el círculo de una card específica
- * @param {HTMLElement} card - La card objetivo/meta
- */
+
+ // * Actualizamos la barra de progreso y el círculo de una card específica
+
 function updateProgress(card) {
+
     // Contar metas y hábitos completados
     const metas = card.querySelectorAll(".meta-card");
     let totalHabitos = 0;
@@ -17,7 +17,7 @@ function updateProgress(card) {
         });
     });
 
-    // Evitar división por cero
+    // *Evitar división por cero
     const percent = totalHabitos === 0 ? 0 : (habitosCompletados / totalHabitos) * 100;
 
     // Actualizar barra lineal
@@ -37,16 +37,16 @@ function updateProgress(card) {
     if (contador) contador.textContent = `${habitosCompletados}/${totalHabitos} completados`;
 }
 
-/**
- * Inicializa la actualización de todas las cards
- */
+
+ // * Inicializa la actualización de todas las cards
+
 function initProgress() {
     const cards = document.querySelectorAll(".objetivo-card");
 
     cards.forEach(card => {
         updateProgress(card);
 
-        // Detectar cambios en los checkboxes de hábitos
+    // * Detectar cambios en los checkboxes de hábitos
         const habitos = card.querySelectorAll(".habit-item input[type='checkbox']");
         habitos.forEach(h => {
             h.addEventListener("change", () => updateProgress(card));
@@ -54,5 +54,5 @@ function initProgress() {
     });
 }
 
-// Ejecutar al cargar la página
+// *Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", initProgress);

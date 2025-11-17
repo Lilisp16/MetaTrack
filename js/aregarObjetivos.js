@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!modalElemento || !btnAgregar) return;
 
-  // Listener para agregar objetivo
+  // *Listener para agregar objetivo
   btnAgregar.addEventListener('click', () => {
     const texto = inputTitulo.value.trim();
     const emojiSeleccionado = modalElemento.querySelector('.emoji-btn.selected');
@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Crear nueva card vacía
+    // *Crear nueva card
     const nuevaCard = document.createElement('div');
     nuevaCard.classList.add('card', 'p-3', 'mb-3', 'cardProgreso', 'objetivo-card');
     nuevaCard.setAttribute('data-progress', '0');
+
+    // HTML completo de la tarjeta, incluyendo el menú oculto
     nuevaCard.innerHTML = `
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
@@ -33,6 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <i data-lucide="more-vertical"></i>
         </button>
       </div>
+
+      <!-- Menú oculto dentro de la card -->
+      <div class="menuConfig card p-2 sombra-suave" style="display:none; position:absolute; right:10px; top:40px; z-index:10;">
+        <button class="btn btn-link text-violet agregarMetaBtn">➕ Agregar Meta</button>
+        <button class="btn btn-link text-danger eliminarObjetivoBtn">🗑 Eliminar objetivo</button>
+      </div>
+
       <div class="d-flex justify-content-between align-items-center mb-2">
         <div class="circle-progress">
           <svg viewBox="0 0 36 36" class="circular-chart">
@@ -49,16 +58,21 @@ document.addEventListener('DOMContentLoaded', () => {
           <small class="text-muted">0/0 completados</small>
         </div>
       </div>
+
       <div class="listaMetas" style="display: none;"></div>
     `;
 
+    // *Agregar card al contenedor
     contenedorObjetivos.appendChild(nuevaCard);
 
-    // Cerrar modal y resetear
+    // *Cerrar modal y resetear
     const modalBootstrap = bootstrap.Modal.getInstance(modalElemento);
     modalBootstrap.hide();
     inputTitulo.value = '';
     btnAgregar.disabled = true;
     emojis.forEach(e => e.classList.remove('selected'));
+
+    // *Reconstruir iconos Lucide en la nueva tarjeta
+    lucide.createIcons();
   });
 });

@@ -27,10 +27,12 @@
    
 
       <!-- Botón: Nuevo Objetivo -->
-    <div class="col d-flex justify-content-end">
-     <button type="button" class="btn btn-violet"  id="btnNuevoObjetivo" data-bs-toggle="modal" data-bs-target="#miModal">
-      <span class="mas"> + </span>Nuevo Objetivo
-  </button>
+        <div class="col d-flex justify-content-end">
+      <!-- Aquí solo queda el id, sin data-bs-toggle ni data-bs-target -->
+      <button type="button" class="btn btn-violet" id="btnNuevoObjetivo">
+        <span class="mas"> + </span>Nuevo Objetivo
+      </button>
+
     <!-- Contenedor donde cargaremos el modal -->
     <div id="contenedorModal"></div>
     </div>
@@ -77,12 +79,13 @@
 
 
 <!-- CARD PARA CREAR OBJETIVOS GENERALES-->
-
+<div id="listaObjetivos"> 
 <div class="card p-3 mb-3 cardProgreso objetivo-card" data-progress="70">
 
   <!-- Fila 1 -->
   <div class="d-flex justify-content-between align-items-start mb-3">
-    
+  
+  
     <!-- Título e información -->
     <div>
       <div class="d-flex align-items-center">
@@ -95,14 +98,15 @@
     <button class="btn btn-light btn-sm config">
       <i data-lucide="more-vertical"></i>
     </button>
+    </div>
        
     <!-- Agrego este menú oculto dentro de cada card para el button config-->
     <div class="menuConfig card p-2 sombra-suave" style="display:none; position:absolute; right:10px; top:40px; z-index:10;">
-    <button class="btn btn-link agregarMetaBtn">➕ Agregar Meta</button>
+    <button class="btn btn-link text-violet agregarMetaBtn">➕ Agregar Meta</button>
     <button class="btn btn-link text-danger eliminarObjetivoBtn">🗑 Eliminar objetivo</button>
   </div>
 
-  </div>
+  
 
 
   <!-- Fila 2-->
@@ -211,28 +215,18 @@
 
     </div>
   </div>
-
-  
 </div>
 
 
-    <!-- AQUI GAURDAMOS LOS OBJETIVOS QUE VAMOS A CREAR -->
-
-<div id="listaObjetivos"></div>
-
-
-
-
-
+    <!-- AQUI CERRAMOS LOS OBJETIVOS QUE VAMOS A CREAR -->
+</div>
 
 </main>
-
-
 
 <footer>
     <!--logo--> 
     <div class="col d-flex justify-content-center">
-      <a  href="https://github.com/Lilisp16/" target="_blank" rel="noopener noreferrer">
+      <a  href="https://github.com/Lilisp16/MetaTrack.git" target="_blank" rel="noopener noreferrer">
         <img class="logo" src="./img/logoDev.png" alt="logoDev"></a>
     </div>
 </footer>
@@ -245,13 +239,13 @@
     lucide.createIcons();
   </script>
 
-<script src="./js/configMenu.js"></script>
 <script src="./js/progreso.js"></script>
 <script src="./js/vermetas.js"></script>
 <script src="./js/verhabitos.js"></script>
 <script src="./js/estadoMeta.js"></script>
 <script src="./js/modal.js"></script>
 <script src="./js/aregarObjetivos.js"></script>
+<script src="./js/configMenu.js"></script> 
 <script src="./js/script.js"></script>
 </body>
 </html>
