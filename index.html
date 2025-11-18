@@ -11,6 +11,7 @@
 <body>
 
 <header>
+
  <!--Nabvar--> 
   <div class="row align-items-center">
     <div class=" col d-flex align-items-center  gap-2 justify-content-start">
@@ -23,8 +24,6 @@
         </div>
     </div>
 
-     <!--logo--> 
-   
 
       <!-- Botón: Nuevo Objetivo -->
         <div class="col d-flex justify-content-end">
@@ -37,7 +36,6 @@
     <div id="contenedorModal"></div>
     </div>
   </div>
-
 </header>
 
 
@@ -79,19 +77,18 @@
 
 
 <!-- CARD PARA CREAR OBJETIVOS GENERALES-->
+
 <div id="listaObjetivos"> 
 <div class="card p-3 mb-3 cardProgreso objetivo-card" data-progress="70">
 
   <!-- Fila 1 -->
   <div class="d-flex justify-content-between align-items-start mb-3">
   
-  
     <!-- Título e información -->
     <div>
       <div class="d-flex align-items-center">
         <p class="card-title mb-0">🏡Comprar una casa</p>
-      </div>
-      <small class="text-muted ms-4">2 metas • 4 hábitos</small>
+      </div> <small class="text-muted ms-4">2 metas • 4 hábitos</small>
     </div>
 
     <!-- Botón menú -->
@@ -107,8 +104,6 @@
   </div>
 
   
-
-
   <!-- Fila 2-->
   <div class="d-flex justify-content-between align-items-center mb-2">
 
@@ -142,15 +137,13 @@
 
   <!-- CONTENEDOR DE LISTA DE METAS  -->
   <div class="listaMetas" style="display: none;">
-
+    
     <!-- META 1 -->
     <div class="card p-3 mt-3 sombra-suave meta-card">
-
       <div class="titulo-meta">
 
-      <!-- Fila 1-->
+      <!-- Fila 1 para agregar habitos-->
       <div class="d-flex justify-content-between align-items-center mb-2">
-        
         <div class="d-flex align-items-center">
           <button class="btn btn-link p-0 me-2 toggle-meta">
             <i data-lucide="chevron-down"></i>
@@ -159,14 +152,15 @@
         </div>
 
         <div>
-          <button class="btn btn-sm btn-light me-2 fondoBoton">
+          <button id="agregarHabito" class="btn btn-sm btn-light me-2 fondoBoton">
             <i data-lucide="plus"></i>
           </button>
-          <button class="btn btn-sm btn-light fondoBoton">
+          <button id="eliminarMeta" class="btn btn-sm btn-light fondoBoton">
             <i data-lucide="trash-2"></i>
           </button>
         </div>
       </div>
+
 
       <!-- Barra de progreso -->
       <div class="d-flex align-items-center mb-2">
@@ -175,15 +169,16 @@
         </div>
       </div>
 
+
       <!-- Contador hábitos -->
       <small class="text-muted mb-2 d-block">2 hábitos</small>
-</div>
+      </div>
 
 
-      <!-- HABITOS  -->
+      <!-- LISTA HABITOS  -->
       <div class="habitos-meta" style="display: none;">
 
-        <!-- Hábito 1 -->
+        <!-- Hábito 1 estatico -->
         <div class="form-check d-flex align-items-center habit-item mb-1 hover-habit">
           <input class="form-check-input" type="checkbox" id="habito1">
           <label class="form-check-label ms-2 flex-grow-1" for="habito1">
@@ -197,7 +192,7 @@
           </button>
         </div>
 
-        <!-- Hábito 2 -->
+        <!-- Hábito 2 estatico -->
         <div class="form-check d-flex align-items-center habit-item mb-1 hover-habit">
           <input class="form-check-input" type="checkbox" id="habito2">
           <label class="form-check-label ms-2 flex-grow-1" for="habito2">
@@ -212,16 +207,19 @@
         </div>
 
       </div>
-
     </div>
   </div>
+
+
+
 </div>
-
-
-    <!-- AQUI CERRAMOS LOS OBJETIVOS QUE VAMOS A CREAR -->
+  <!-- AQUI CERRAMOS LOS OBJETIVOS QUE VAMOS A CREAR -->
 </div>
 
 </main>
+
+
+
 
 <footer>
     <!--logo--> 
@@ -233,19 +231,28 @@
 
 
 
+
   <!-- Lucide para icono svg -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script>
     lucide.createIcons();
   </script>
 
+
+<!-- Primero las funciones base -->
+<script src="./js/agregarObjetivo.js"></script>
+<script src="./js/agregarMeta.js"></script>
+
+<!-- Luego el modal, que depende de esas funciones -->
+<script src="./js/modal.js"></script>
+
+<!-- Después la lógica general y menús -->
+<script src="./js/configMenu.js"></script>
+<script src="./js/script.js"></script>
 <script src="./js/progreso.js"></script>
 <script src="./js/vermetas.js"></script>
 <script src="./js/verhabitos.js"></script>
 <script src="./js/estadoMeta.js"></script>
-<script src="./js/modal.js"></script>
-<script src="./js/aregarObjetivos.js"></script>
-<script src="./js/configMenu.js"></script> 
-<script src="./js/script.js"></script>
+
 </body>
 </html>

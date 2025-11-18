@@ -1,9 +1,6 @@
-// Script para el modal para Objetivos, Metas y Hábitos
-// Maneja abrir, cerrar, seleccionar emojis y reutilizar el mismo modal
-
-
-let modo = "objetivo";              // puede ser "objetivo", "meta" o "habito"
-let cardObjetivoSeleccionada = null; // tarjeta padre donde se insertará meta/hábito
+// * Variables globales compartidas
+window.modo = "objetivo";               // puede ser "objetivo", "meta" o "habito"
+window.cardObjetivoSeleccionada = null; // tarjeta padre donde se insertará meta/hábito
 
 // *Cargar modal.html solo una vez y ponerlo en el contenedor
 fetch('modal.html')
@@ -16,17 +13,26 @@ fetch('modal.html')
     const modalBootstrap = new bootstrap.Modal(modalElemento);
     const btnNuevoObjetivo = document.getElementById("btnNuevoObjetivo");
 
-  
-    // *Función para configurar el modal según la  fucion Objetivos Metas o Habitos
-  
+    const input = modalElemento.querySelector("#modalInput");
+    const boton = modalElemento.querySelector("#modalBoton");
+    const emojis = modalElemento.querySelectorAll('.emoji-btn');
+
+    // *Obtiene el botón “Agregar” dentro del modal
+    const btnAgregar = modalElemento.querySelector(".btnAgregar");
+    const inputTitulo = input;
+
+    // *Exponer referencias necesarias al global
+    window.modalBootstrap = modalBootstrap;
+    window.btnAgregar = btnAgregar;
+    window.inputTitulo = inputTitulo;
+
+    // *Función para configurar el modal según la función Objetivos, Metas o Hábitos
     function configurarModal(tipo) {
-      modo = tipo; // guardamos el modo actual
+      window.modo = tipo; // guardamos el modo actual
 
       const titulo = modalElemento.querySelector("#modalTitulo");
       const descripcion = modalElemento.querySelector("#modalDescripcion");
       const label = modalElemento.querySelector("#modalLabel");
-      const input = modalElemento.querySelector("#modalInput");
-      const boton = modalElemento.querySelector("#modalBoton");
 
       if (tipo === "objetivo") {
         titulo.textContent = "Agregar Objetivo Principal";
@@ -49,37 +55,40 @@ fetch('modal.html')
       }
     }
 
-  
-    // *Botón en index.html que abre el modal para Objetivo
-
-    btnNuevoObjetivo.addEventListener("click", () => {
-      configurarModal("objetivo"); // configuramos modo objetivo
-      modalBootstrap.show();
-
-      // *Resetear input y botón cada vez que se abre el modal
-      const inputTitulo = modalElemento.querySelector('input[type="text"]');
-      const btnAgregar = modalElemento.querySelector('.btnAgregar');
+    // *Función para resetear el modal
+    function resetModal() {
       inputTitulo.value = '';
       btnAgregar.disabled = true;
-
-      // *Deseleccionar cualquier emoji seleccionado al abrir
-      const emojis = modalElemento.querySelectorAll('.emoji-btn');
       emojis.forEach(e => e.classList.remove('selected'));
+    }
+
+    // *Función para abrir el modal en cualquier modo
+    function abrirModal(tipo, card) {
+      window.modo = tipo;
+      window.cardObjetivoSeleccionada = card || null;
+      configurarModal(tipo);
+      resetModal();
+      modalBootstrap.show();
+    }
+
+    // *Exponer funciones al global
+    window.configurarModal = configurarModal;
+    window.resetModal = resetModal;
+    window.abrirModal = abrirModal;
+
+    // *Botón en index.html que abre el modal para OBJETIVOS
+    btnNuevoObjetivo.addEventListener("click", () => {
+      configurarModal("objetivo"); // configuramos modo objetivo
+      resetModal();
+      modalBootstrap.show();
     });
 
-  
     // *Activar botón "Agregar" solo si hay texto en el input
- 
-    const inputTitulo = modalElemento.querySelector('input[type="text"]');
-    const btnAgregar = modalElemento.querySelector('.btnAgregar');
-    inputTitulo.addEventListener('input', () => {
-      btnAgregar.disabled = inputTitulo.value.trim() === '';
+    input.addEventListener('input', () => {
+      btnAgregar.disabled = input.value.trim() === '';
     });
 
-  
     // *Selección de emojis (solo uno puede estar seleccionado)
-
-    const emojis = modalElemento.querySelectorAll('.emoji-btn');
     emojis.forEach(emoji => {
       emoji.addEventListener('click', () => {
         emojis.forEach(e => e.classList.remove('selected'));
@@ -87,5 +96,10 @@ fetch('modal.html')
       });
     });
 
-
+    // *Cuando se hace clic en "Agregar" dentro del modal, activar cada función
+    btnAgregar.addEventListener("click", () => {
+      if (window.modo === "objetivo") window.agregarObjetivo?.();
+      else if (window.modo === "meta") window.agregarMeta?.();
+      else if (window.modo === "habito") window.agregarHabito?.();
+    });
   });

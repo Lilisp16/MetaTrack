@@ -74,5 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // *Reconstruir iconos Lucide en la nueva tarjeta
     lucide.createIcons();
+
+
+       // *Mensaje positivo al usuario
+  alert("✅ Objetivo agregado con éxito");
   });
+
+   
 });
+
+
+

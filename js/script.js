@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const card = e.target.closest(".objetivo-card");
           console.log("Abrir modal para agregar meta en:", card);
           // Aquí llamas a la función que abre el modal de agregar meta
+          abrirModal("meta", card);
           return;
       }
 

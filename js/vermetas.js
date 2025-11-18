@@ -1,3 +1,4 @@
+
 // eventos para "Ver Metas"
 // Funciona para cards creadas en HTML y también para las agregadas por JS
 document.addEventListener("click", (e) => {
